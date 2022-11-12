@@ -1,21 +1,23 @@
 import random
+
 continuare = True
 lista_valori = ["carta", "forbice", "sasso"]
 vittorie = 0
 pareggi = 0
 sconfitte = 0
 
+
 def sconfitta(risultato):
     global sconfitte
+    #global risultato, sconfitte
     print("È uscito", risultato, "\nHai perso!")
     sconfitte = sconfitte + 1
-    return sconfitte
+
 
 def vittoria(risultato):
     global vittorie
     print("È uscito", risultato, "\nHai vinto!")
     vittorie = vittorie + 1
-    return vittorie
 
 
 def continuare_a_giocare():
@@ -23,7 +25,16 @@ def continuare_a_giocare():
     rigiocare = input("Vuoi continuare? (si o no): ")
     if (rigiocare == "no"):
         continuare = False
-    return continuare
+
+
+def stampa_risultati(pareggi, vittorie, sconfitte):
+    print(f"\nRisultato finale:\nPareggi {pareggi} - Sconfitte {sconfitte} - Vittorie {vittorie}")
+    if (vittorie > sconfitte):
+        print("Hai vinto il gioco! :)")
+    elif (vittorie == sconfitte):
+        print("Pareggio :|")
+    elif (vittorie <= sconfitte):
+        print("Non hai vinto il gioco :(")
 
 
 def cartaForbiceSasso():
@@ -60,14 +71,7 @@ def cartaForbiceSasso():
                 else:
                     vittoria(risultato)
                     continuare_a_giocare()
-    print(
-        f"\nRisultato finale:\nPareggi {pareggi} - Sconfitte {sconfitte} - Vittorie {vittorie}")
-    if (vittorie > sconfitte):
-        print("Hai vinto il gioco! :)")
-    elif (vittorie == sconfitte):
-        print("Pareggio :|")
-    elif (vittorie <= sconfitte):
-        print("Non hai vinto il gioco :(")
+    stampa_risultati(pareggi, vittorie, sconfitte)
 
 
 cartaForbiceSasso()
