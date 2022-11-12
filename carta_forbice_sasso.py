@@ -1,5 +1,22 @@
 import random
 continuare = True
+lista_valori = ["carta", "forbice", "sasso"]
+vittorie = 0
+pareggi = 0
+sconfitte = 0
+
+def sconfitta(risultato):
+    global sconfitte
+    #global risultato, sconfitte
+    print("È uscito", risultato, "\nHai perso!")
+    sconfitte = sconfitte + 1
+    return sconfitte
+
+def vittoria(risultato):
+    global vittorie
+    print("È uscito", risultato, "\nHai vinto!")
+    vittorie = vittorie + 1
+    return vittorie
 
 
 def continuare_a_giocare():
@@ -11,12 +28,8 @@ def continuare_a_giocare():
 
 
 def cartaForbiceSasso():
-    lista_valori = ["carta", "forbice", "sasso"]
-    vittorie = 0
-    pareggi = 0
-    sconfitte = 0
+    global risultato, pareggi, sconfitte, vittorie
     print("Iniziamo!")
-
     while continuare:
         tiro = input("Carta Forbice o Sasso? Cosa scegli? ").lower()
         if tiro not in lista_valori:
@@ -29,30 +42,24 @@ def cartaForbiceSasso():
                 continuare_a_giocare()
             elif risultato == "carta":
                 if tiro == "sasso":
-                    print("È uscito", risultato, "\nHai perso!")
-                    sconfitte = sconfitte + 1
+                    sconfitta(risultato)
                     continuare_a_giocare()
                 else:
-                    print("È uscito", risultato, "\nHai vinto!")
-                    vittorie = vittorie + 1
+                    vittoria(risultato)
                     continuare_a_giocare()
             elif risultato == "forbice":
                 if tiro == "sasso":
-                    print("È uscito", risultato, "\nHai vinto!")
-                    vittorie = vittorie + 1
+                    vittoria(risultato)
                     continuare_a_giocare()
                 else:
-                    print("È uscito", risultato, "\nHai perso!")
-                    sconfitte = sconfitte + 1
+                    sconfitta(risultato)
                     continuare_a_giocare()
             elif risultato == "sasso":
                 if tiro == "forbice":
-                    print("È uscito", risultato, "\nHai perso!")
-                    sconfitte = sconfitte + 1
+                    sconfitta(risultato)
                     continuare_a_giocare()
                 else:
-                    print("È uscito", risultato, "\nHai vinto!")
-                    vittorie = vittorie + 1
+                    vittoria(risultato)
                     continuare_a_giocare()
     print(
         f"\nRisultato finale:\nPareggi {pareggi} - Sconfitte {sconfitte} - Vittorie {vittorie}")
