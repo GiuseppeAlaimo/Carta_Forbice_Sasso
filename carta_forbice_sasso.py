@@ -7,7 +7,6 @@ sconfitte = 0
 
 def sconfitta(risultato):
     global sconfitte
-    #global risultato, sconfitte
     print("È uscito", risultato, "\nHai perso!")
     sconfitte = sconfitte + 1
     return sconfitte
